@@ -1,19 +1,18 @@
-# AgentENV baseline：prettier-14400
+# AgentENV：Prettier #14400 适配
 
 该目录保存 AgentENV 的私有启动与采集适配；固定 workload 位于同一实验的
-`../../workloads/prettier-14400/`。它重放其中的 26 个 action，并提供内存采样、自动画图和
-action，不调用模型、
+`../../workloads/prettier-14400/`。它重放其中的 26 个动作，并提供内存采样、自动分析和画图。不调用模型、
 不读取 `deepseekAPI`，也不向 sandbox 注入任何 API key。
 
 ## 一键运行
 
-前置条件与 `docs/deployment/workload-prettier-14400.md` 相同：`aenv-server` 容器健康、
+前置条件与 [当前部署说明](../../../../../docs/deployment/agentenv-baseline.md) 相同：`aenv-server` 容器健康、
 CLI 已认证、x86_64/KVM/ublk 可用，且 host 可无交互 `sudo` 读取 Firecracker
 `smaps_rollup`。为避免 host 内存归因混淆，脚本要求开始时没有 active sandbox。
 从空机器开始部署时，先按 [`DEPLOYMENT.md`](DEPLOYMENT.md) 完成检查。
 
 ```bash
-cd /home/shao/MixFS
+# 在仓库根目录执行
 bash motivation/experiments/run.sh agentenv prettier-14400
 ```
 

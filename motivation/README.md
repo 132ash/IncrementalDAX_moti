@@ -1,47 +1,13 @@
-# Motivation experiments
+# Motivation 实验
 
-这里存放 `docs/moti.md` 对应的可复现实验，而不是 workload 输入本身。
+这里存放 [docs/moti/moti.md](../docs/moti/moti.md) 对应的前期实验。固定输入和运行协议保存在 `experiments/`，单次运行产物保存在 `results/`。
 
-```text
-motivation/
-├── experiments/                         # 可复用脚本和实验说明
-│   ├── lib/                             # 多个实验可共用的 host 工具
-│   ├── run.sh                           # 统一入口：system + workload + action
-│   ├── exp1-single-app-smoke/           # 单应用 smoke 实验及其固定 workload
-│       ├── workloads/prettier-14400/
-│       └── systems/{agentenv,trenvx}/
-│   ├── exp2-multi-rounds/               # 四轮 checkpoint/restore
-│       ├── workloads/prettier-6604/
-│       └── systems/{agentenv,trenvx}/
-│   ├── exp3-fork/                       # 父两轮后 fork 四条 divergent 分支
-│       ├── workloads/prettier-6604-fork/
-│       └── systems/{agentenv,trenvx}/
-│   └── exp4-realistic-fork/             # 5 peer 读取父未预热文件并采集 host PSS
-│       ├── workloads/prettier-6604-realistic-fork/
-│       └── systems/{agentenv,trenvx}/
-└── results/
-    ├── exp1-single-app-smoke/
-    │   └── <system>/                    # 每个系统的 summary、figures、raw/<run-id>
-    ├── exp2-multi-rounds/
-    │   └── <system>/                    # 每个系统的 summary、figures、raw/<run-id>
-    ├── exp3-fork/
-    │   └── <system>/                    # 每个系统的 summary、figures、raw/<run-id>
-    └── exp4-realistic-fork/
-        └── <system>/                    # 每个系统的 summary、figures、raw/<run-id>
-```
+| 目录 | 内容 | 结果 |
+| --- | --- | --- |
+| [exp1-single-app-smoke](experiments/exp1-single-app-smoke/README.md) | Prettier #14400 的 26 步开源轨迹回放 | [Exp1](results/exp1-single-app-smoke/trenvx/summary.md) |
+| [exp2-multi-rounds](experiments/exp2-multi-rounds/README.md) | Prettier #6604 四轮有状态回放，每轮 checkpoint/restore | [Exp2](results/exp2-multi-rounds/summary.md) |
+| [exp3-RL-fork](experiments/exp3-RL-fork/README.md) | 三个真实修复任务、七条采样轨迹、三种调度 | [按任务索引](results/README.md) |
 
-workload 的固定输入（task、trajectory、26 个 action）随实验协议保存在
-`experiments/exp1-single-app-smoke/workloads/prettier-14400/`。单次测量数据不会写回输入
-目录。四轮 checkpoint/restore workload 位于
-`experiments/exp2-multi-rounds/workloads/prettier-6604/`，结果写入
-`results/exp2-multi-rounds/`。fork workload 位于
-`experiments/exp3-fork/workloads/prettier-6604-fork/`，结果写入 `results/exp3-fork/`。
-真实冷文件 fan-out workload 位于
-`experiments/exp4-realistic-fork/workloads/prettier-6604-realistic-fork/`，结果写入
-`results/exp4-realistic-fork/`。
+复现顺序：先完成[部署](../docs/deployment/README.md)，用 Exp1 检查运行链路，再做 Exp2 或 Exp3。实验目录内的 `workloads/` 是冻结输入；不要在运行时重新采样或改写动作。每次测量使用独立 `raw/<run-id>/`，保留输入哈希、输出、退出码和内存采样，分析结果从 raw 重建。
 
-运行方法见
-[`experiments/exp1-single-app-smoke/README.md`](experiments/exp1-single-app-smoke/README.md) 和
-[`experiments/exp2-multi-rounds/README.md`](experiments/exp2-multi-rounds/README.md)、
-[`experiments/exp3-fork/README.md`](experiments/exp3-fork/README.md)、
-[`experiments/exp4-realistic-fork/README.md`](experiments/exp4-realistic-fork/README.md)。
+当前 Exp3 曾命名为 Exp5；历史 `exp3-fork`、`exp4-realistic-fork` 不在本仓库中。具体命令与兼容说明见 [experiments/README.md](experiments/README.md)。

@@ -1,5 +1,7 @@
 # AgentENV + Claude Code + DeepSeek 最简实验部署
 
+本文保留早期在线采样流程。当前固定轨迹实验使用名为 `aenv-server` 的 Docker 服务；Exp3 还要求本地 fork 的 balloon 开关。请先按[当前 baseline 部署](agentenv-baseline.md)构建服务，再按本文准备在线 agent。固定 replay 不需要模型 key；本文中的历史在线版本和浮动安装命令不作为当前性能实验的版本锁定依据。
+
 本文给出一条单机、单 sandbox 的最小可复现实验路径：AgentENV 提供
 Firecracker/OverlayBD 环境，Claude Code 通过 DeepSeek 的 Anthropic 兼容接口执行真实
 代码仓库任务，同时保存 agent trajectory、代码改动和可选的文件系统 syscall trace。
@@ -174,7 +176,8 @@ AgentENV release/commit 固定下来。
 首个推荐 workload 已固定为 Prettier #14400，并提供了完整的 DeepSeek online-agent
 与 Tracebench action replay 流程。实际实验优先按 companion 文档执行：
 
-- [首个文件访问型 workload：Prettier #14400](./workload-prettier-14400.md)
+- [首个文件访问型 workload：Prettier #14400](../workload/workload-prettier-14400.md)
+- [在线采样与原始轨迹准备手册](prettier-14400-online.md)
 
 下面的 5.1–5.3 节保留为导入其他真实任务时的通用方法。
 
@@ -423,7 +426,7 @@ key 和运行 Claude。若实验必须在 agent 执行中做 checkpoint，只能
 
 本仓库已经为 Tracebench 的 `prettier__prettier-14400` 固定了 artifact SHA256、OCI
 image digest，并给出了可审计的 26-step replay runner；参见
-[Prettier #14400 workload](./workload-prettier-14400.md)。
+[Prettier #14400 workload](../workload/workload-prettier-14400.md)。
 
 - [SWE-agent trajectories](https://github.com/SWE-agent/SWE-agent/blob/main/docs/usage/trajectories.md)：
   `.traj` 中包含 thought/action/observation，并通常带对应 config 和运行日志。

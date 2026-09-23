@@ -4,7 +4,8 @@
 见：
 
 - [`docs/deployment/agentenv-claude-code-deepseek.md`](../../../../../docs/deployment/agentenv-claude-code-deepseek.md)
-- [`docs/deployment/workload-prettier-14400.md`](../../../../../docs/deployment/workload-prettier-14400.md)
+- [`docs/workload/workload-prettier-14400.md`](../../../../../docs/workload/workload-prettier-14400.md)
+- [当前实验的 Docker 部署](../../../../../docs/deployment/agentenv-baseline.md)
 
 固定 action replay 本身不需要 Claude Code 或 DeepSeek key。最小部署检查为：
 
@@ -18,8 +19,8 @@ aenv list
 sudo -n true
 ```
 
-若 server 尚未部署，按上面的主部署文档执行 Docker 或 systemd 二选一流程并完成
-`aenv auth`。本机当前实验使用名为 `aenv-server` 的 Docker 容器；host 内存采样器也以
+若 server 尚未部署，按当前实验的 Docker 部署说明构建本地 fork 并完成
+`aenv auth`。本实验使用名为 `aenv-server` 的 Docker 容器；host 内存采样器也以
 该容器名定位 cgroup。若改变容器名，应同步调整公共采样器。
 
 实验固定使用 digest，而不是 registry 的浮动 tag。首次运行会由 AgentENV 解析/缓存
@@ -28,7 +29,7 @@ sudo -n true
 部署成功后运行：
 
 ```bash
-cd /home/shao/MixFS
+# 在仓库根目录执行
 bash motivation/experiments/run.sh agentenv prettier-14400
 ```
 
