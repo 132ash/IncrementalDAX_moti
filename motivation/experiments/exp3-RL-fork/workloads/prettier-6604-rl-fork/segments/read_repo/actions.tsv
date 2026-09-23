@@ -1,0 +1,6 @@
+step	sha256	command
+001	237880e9067ba6073efad77e243143e416a25510b4417095a883c341466d9f0e	cd /testbed && ls && echo "---" && cat package.json | head -40
+002	b4674ff29382998b285b0673b6a2abea6e60765f1d845f287d1cf36c6652042d	cd /testbed && rg -l "TSNonNullExpression|TSParenthesizedType|ParenthesizedType" src | head -20
+003	9f21209c34f9449e6fe4f35003ed46de680c03ba556182bad01903a5e74489c5	cd /testbed && grep -rln "ParenthesizedType" src | head -20
+004	f30ee348fb307e059e44e9db19601eb7ad5fc044bf8e0a91b5b255804f808487	cd /testbed && printf 'type C = ((number | string))["toString"];\ntype D = ((keyof T1))["foo"];\ntype E = ((A & B))["x"];\ntype F = ((A extends B ? C : D))["x"];\n' > /tmp/t.ts && node ./bin/prettier.js /tmp/t.ts
+005	135027ecc216e48cec1cd503649e2ed2e24d15c80a071a1de4c44caeb0e217e0	cd /testbed && grep -n "ParenthesizedType\|TSParenthesizedType" src/language-js/printer-estree.js src/language-js/needs-parens.js src/language-js/clean.js

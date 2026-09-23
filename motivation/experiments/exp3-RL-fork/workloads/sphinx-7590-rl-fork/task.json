@@ -1,0 +1,28 @@
+{
+  "instance_id": "sphinx-doc__sphinx-7590",
+  "title": "C++ User Defined Literals not supported",
+  "url": "https://github.com/sphinx-doc/sphinx/issues/7590",
+  "difficulty": ">4 hours",
+  "base_commit": "2e506c5ab457cba743bb47eb5b8c8eb9dd51d23d",
+  "source_image": "ghcr.io/epoch-research/swe-bench.eval.x86_64.sphinx-doc__sphinx-7590@sha256:577ebfcce825e4c9621e066dc1c8375443be94bbc6de30b9368e422b8f123731",
+  "system_prompt": "You are a code-repair agent in the pinned sphinx-doc/sphinx repository at /testbed. Solve SWE-bench Verified task sphinx-doc__sphinx-7590. Sphinx's C++ domain parser rejects user-defined literals such as `constexpr auto units::si::planck_constant = 6.62607015e-34q_J * 1q_s` with Expected end of definition. Add robust C++ UDL support in the parser and its representation, with focused tests. Use run_shell to inspect, edit, reproduce, and run focused pytest targets. Work as a normal repair agent and make a coherent non-trivial fix. Never access the network, install packages, inspect benchmark gold patches, run the full test suite, or perform synthetic file/page scans. Commands run under bash in /testbed. A failing investigative command is allowed.",
+  "stages": [
+    {"role": "backbone", "segment": "read_repo", "goal": "Inspect the C++ domain parser, expression tests, and reproduce failures for floating and integer UDLs. Do not edit yet.", "budget": 6},
+    {"role": "backbone", "segment": "trace_cpp_parser", "goal": "Trace tokenization, literal AST nodes, expression parsing, and rendering/ID behavior for C++ literals. Do not edit yet.", "budget": 7},
+    {"role": "backbone", "segment": "core_patch", "goal": "Implement parser and AST support for C++ user-defined literal suffixes with focused regression tests.", "budget": 9},
+    {"role": "backbone", "segment": "core_verify", "goal": "Run focused C++ domain expression tests, diagnose failures, and repair the implementation.", "budget": 7},
+    {"role": "backbone", "segment": "backbone_finish", "goal": "Review the full diff and test a meaningful matrix of numeric, string, and character literal suffix cases.", "budget": 6},
+    {"role": "early_1", "segment": "early_1_inspect", "goal": "Independently inspect numeric literal regexes and suffix lexical rules from the early checkpoint.", "budget": 5},
+    {"role": "early_1", "segment": "early_1_finish", "goal": "Develop and test a numeric-tokenization repair for integer and floating UDLs.", "budget": 7},
+    {"role": "early_2", "segment": "early_2_inspect", "goal": "Independently inspect literal AST representation, describe(), and identifier generation.", "budget": 5},
+    {"role": "early_2", "segment": "early_2_finish", "goal": "Develop and test an AST-centered UDL repair including rendering and IDs.", "budget": 7},
+    {"role": "early_3", "segment": "early_3_inspect", "goal": "Independently inspect expression precedence and where a UDL suffix should bind.", "budget": 5},
+    {"role": "early_3", "segment": "early_3_finish", "goal": "Develop and test a parser repair across multiplication and unary expressions.", "budget": 7},
+    {"role": "late_1", "segment": "late_1_inspect", "goal": "Audit the candidate for decimal, exponent, hexadecimal, and integer UDL forms.", "budget": 5},
+    {"role": "late_1", "segment": "late_1_finish", "goal": "Strengthen numeric UDL coverage and run focused expression tests.", "budget": 6},
+    {"role": "late_2", "segment": "late_2_inspect", "goal": "Audit the candidate for identifier rendering, spacing, and expression IDs.", "budget": 5},
+    {"role": "late_2", "segment": "late_2_finish", "goal": "Improve or validate rendering and ID stability with focused tests.", "budget": 6},
+    {"role": "late_3", "segment": "late_3_inspect", "goal": "Audit character and string UDLs and compatibility with built-in suffixes.", "budget": 5},
+    {"role": "late_3", "segment": "late_3_finish", "goal": "Add robust edge coverage without regressing ordinary literals and run focused tests.", "budget": 6}
+  ]
+}

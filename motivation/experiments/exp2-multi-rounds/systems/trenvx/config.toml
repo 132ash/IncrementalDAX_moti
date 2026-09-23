@@ -1,0 +1,30 @@
+fc_binary_path = "/usr/local/bin/firecracker"
+ch_binary_path = "/var/lib/trenvx/deps/cloud-hypervisor/target/release/cloud-hypervisor"
+data_root = "/var/lib/trenvx"
+
+[orchestrator]
+port = 15001
+host = "127.0.0.1"
+subnet = "10.169.0.0/16"
+cgroup_name = "user.slice/trenvx-exp2"
+
+[template_manager]
+subnet = "10.161.0.0/30"
+kernel_debug_output = false
+rootfs_build_mode = "normal"
+template_id = "prettier-6604-exp2-ch-dax"
+envd_path = "/home/shao/MixFS/baselines/TrEnv-X/packages/envd/bin/envd"
+
+[log_collector]
+port = 10807
+
+[template."prettier-6604-exp2-ch-dax"]
+vcpu = 2
+mem_mb = 4096
+disk_mb = 4096
+kernel_version = "ch-6.1.134"
+docker_img = "mixfs/prettier-6604-exp2-trenvx:8159d38fcbd6"
+no_pull = true
+huge_pages = false
+overlay = true
+vmm_type = "cloud-hypervisor"

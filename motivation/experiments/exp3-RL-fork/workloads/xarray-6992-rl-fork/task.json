@@ -1,0 +1,28 @@
+{
+  "instance_id": "pydata__xarray-6992",
+  "title": "index refactor: more _coord_names than _variables on Dataset",
+  "url": "https://github.com/pydata/xarray/issues/6992",
+  "difficulty": ">4 hours",
+  "base_commit": "45c0a114e2b7b27b83c9618bc05b36afac82183c",
+  "source_image": "ghcr.io/epoch-research/swe-bench.eval.x86_64.pydata__xarray-6992@sha256:c05101ef7105599eca1b7d15279a2928ac5453876cd2b83008deb9165d752655",
+  "system_prompt": "You are a code-repair agent in the pinned pydata/xarray repository at /testbed. Solve SWE-bench Verified task pydata__xarray-6992. Since the index refactor, Dataset may contain more _coord_names than _variables. DataVariables assumes every name not in _coord_names is a data variable, and reset_index(..., drop=True) can leave inconsistent state; the supplied example ends with ValueError: __len__() should return >= 0. Related regressions cover Dataset/DataArray reset_index, dropping or converting indexes, and groupby dropping NaNs. Use run_shell to inspect, edit, reproduce, and run focused pytest targets. Work as a normal repair agent and make a coherent non-trivial fix. Never access the network, install packages, inspect benchmark gold patches, run the full test suite, or perform synthetic file/page scans. Commands run under bash in /testbed. A failing investigative command is allowed.",
+  "stages": [
+    {"role": "backbone", "segment": "read_repo", "goal": "Inspect repository state, reproduce the issue, and identify the index/reset_index code and relevant tests. Do not edit yet.", "budget": 6},
+    {"role": "backbone", "segment": "trace_index_state", "goal": "Trace Dataset _variables, _coord_names, _indexes invariants through reset_index and groupby. Inspect several focused tests. Do not edit yet.", "budget": 7},
+    {"role": "backbone", "segment": "core_patch", "goal": "Implement a coherent fix for index reset/drop state and add or update focused regression coverage.", "budget": 9},
+    {"role": "backbone", "segment": "core_verify", "goal": "Run the targeted Dataset/DataArray reset_index tests and a focused groupby regression; diagnose and repair failures.", "budget": 7},
+    {"role": "backbone", "segment": "backbone_finish", "goal": "Review the complete diff, exercise the minimal reproducer, and run a meaningful focused regression set.", "budget": 6},
+    {"role": "early_1", "segment": "early_1_inspect", "goal": "Independently inspect reset_index(drop=True) and missing coordinate-variable handling from the early checkpoint.", "budget": 5},
+    {"role": "early_1", "segment": "early_1_finish", "goal": "Develop and test a repair centered on drop=True and dropped dimensions.", "budget": 7},
+    {"role": "early_2", "segment": "early_2_inspect", "goal": "Independently analyze DataVariables length/iteration invariants and repr failures.", "budget": 5},
+    {"role": "early_2", "segment": "early_2_finish", "goal": "Develop and test an invariant-preserving repair for DataVariables and Dataset state.", "budget": 7},
+    {"role": "early_3", "segment": "early_3_inspect", "goal": "Independently trace the groupby drops-NaNs regression back to index cleanup.", "budget": 5},
+    {"role": "early_3", "segment": "early_3_finish", "goal": "Develop and test a repair that covers groupby and index cleanup without a narrow special case.", "budget": 7},
+    {"role": "late_1", "segment": "late_1_inspect", "goal": "Audit the candidate patch for DataArray reset_index behavior and conversion consistency.", "budget": 5},
+    {"role": "late_1", "segment": "late_1_finish", "goal": "Strengthen the candidate for DataArray and run focused tests.", "budget": 6},
+    {"role": "late_2", "segment": "late_2_inspect", "goal": "Audit the drop/convert/rename parameter matrix and internal index consistency.", "budget": 5},
+    {"role": "late_2", "segment": "late_2_finish", "goal": "Strengthen the candidate across the reset_index parameter matrix and verify it.", "budget": 6},
+    {"role": "late_3", "segment": "late_3_inspect", "goal": "Audit interactions between reset indexes, groupby, and stale coordinate names.", "budget": 5},
+    {"role": "late_3", "segment": "late_3_finish", "goal": "Improve or validate the candidate with groupby and invariant-focused regressions.", "budget": 6}
+  ]
+}

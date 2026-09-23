@@ -1,0 +1,6 @@
+step	sha256	command
+001	8d3e9286d795230af390648e766a5207285e506a68f38221b702ba14cc22dacd	cd /testbed && grep -n "def _parse_.*expression\|def _parse_cast_expression\|def _parse_unary_expression\|def _parse_postfix_expression\|def _parse_primary_expression\|def _parse_assignment_expression\|def _parse_conditional_expression" sphinx/domains/cpp.py
+002	cd7c8e9d7b47490c5970713bdff8cead16a789a8a85f438cb7f158a7b97159b7	cd /testbed && sed -n '5206,5265p' sphinx/domains/cpp.py
+003	e9c31051b91ab8c1715aea3290eb8fa03bb55603a9f877f2567d2ab966090641	cd /testbed && sed -n '4839,4990p' sphinx/domains/cpp.py
+004	31c481473e6efa2ee7f354a01864415f026029e6ee5a3930c6fa51dba5032d15	cd /testbed && sed -n '995,1100p' sphinx/domains/cpp.py
+005	0e6d87a22935dc8176e26bc277f308dcda407cd4b9aa482e09cf1d362abbfa55	cd /testbed && sed -n '5264,5300p' sphinx/domains/cpp.py && echo "=== string parse ===" && grep -n "def _parse_string\|_string_re" sphinx/domains/cpp.py | head

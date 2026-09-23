@@ -1,0 +1,9 @@
+step	sha256	command
+001	2cfa65a646152c98c3784b1dbccdfaca1b108dacb2f33f5d482024ca956af3f1	sed -n '2720,2860p' src/language-js/printer-estree.js
+002	4a0a4aa610ae93aa232a98203cfe2e0ca8c4b2aa530a957d70c1831e48a9bd31	grep -RIn 'TSUnionType\|TSIntersectionType\|TSTypeOperator' src/language-js | sed -n '1,200p'
+003	f569804cd59896f11840a3b075377f9d48fd9978dd0df5cd610bf02ba80a76b6	python3 - <<'PY'
+004	cc19d4729583e7bfb22716a6a940093ac76e6366d3aa8a06063ad3197922857f	git diff -- src/language-js/printer-estree.js
+005	d57fb4b879c913f8400a1b21636f2bb97e06b7f4e9d30cdcdbd502e1080f1a01	sed -n '3180,3255p' src/language-js/printer-estree.js
+006	2caa162e1fb5ed00881ac80604c4edab503a548bd7395e2ba31dff303301cc5f	grep -RIn 'type T[1-4]' tests tests_config 2>/dev/null | sed -n '1,120p'
+007	586630e3767a600fb0883a034bacda5e4b41b966b57323c7abe5ee4f7e508ea2	printf '%s\n' 'type E = ((number | string))["toString"]' 'type F = ((keyof E))["foo"]' > /tmp/mixfs-cases-round3.ts
+008	de072b0c358388dfcd832119d210becc4caa3b45b455c10790c4b8e53d6bebfe	node node_modules/.bin/jest --no-watchman --runInBand tests/typescript_keyof/jsfmt.spec.js

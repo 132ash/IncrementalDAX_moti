@@ -1,0 +1,6 @@
+[submodule "baselines/TrEnv-X"]
+	path = baselines/TrEnv-X
+	url = git@github.com:132ash/TrEnv-X_forked.git
+[submodule "baselines/AgentENV"]
+	path = baselines/AgentENV
+	url = git@github.com:132ash/AgentENV_forked.git

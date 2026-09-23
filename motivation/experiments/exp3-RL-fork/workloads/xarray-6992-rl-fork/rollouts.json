@@ -1,0 +1,51 @@
+{
+  "backbone": [
+    "read_repo",
+    "trace_index_state",
+    "core_patch",
+    "core_verify",
+    "backbone_finish"
+  ],
+  "early_1": [
+    "read_repo",
+    "trace_index_state",
+    "early_1_inspect",
+    "early_1_finish"
+  ],
+  "early_2": [
+    "read_repo",
+    "trace_index_state",
+    "early_2_inspect",
+    "early_2_finish"
+  ],
+  "early_3": [
+    "read_repo",
+    "trace_index_state",
+    "early_3_inspect",
+    "early_3_finish"
+  ],
+  "late_1": [
+    "read_repo",
+    "trace_index_state",
+    "core_patch",
+    "core_verify",
+    "late_1_inspect",
+    "late_1_finish"
+  ],
+  "late_2": [
+    "read_repo",
+    "trace_index_state",
+    "core_patch",
+    "core_verify",
+    "late_2_inspect",
+    "late_2_finish"
+  ],
+  "late_3": [
+    "read_repo",
+    "trace_index_state",
+    "core_patch",
+    "core_verify",
+    "late_3_inspect",
+    "late_3_finish"
+  ]
+}

@@ -1,0 +1,9 @@
+step	sha256	command
+001	11930a849717fa1133f5ba1963603ee3121ac382066311ad882c0bd69cc56ced	find tests_config tests_integration -type f -printf '%p\n' 2>/dev/null | sort | sed -n '1,180p'
+002	44bf6de4d5a4246c3c29c6ba7016f6df2a82e6fd477382e3bf7d7ea0dfda155c	grep -RIn 'typescript' tests_config tests_integration scripts | sed -n '1,180p'
+003	61276b87d012067039818e4311de3c76b9d34d2bd30bdb4977a240b5cbf3bf48	sed -n '1,220p' tests_config/run_spec.js
+004	f1218a477a7a64d97fe1dc66d4bb8dfe02ff7d0c5de9c2b7872a078e44dd6189	printf '%s\n' 'type G = ((A & B))[keyof C]' 'type H = ((A extends B ? C : D))[K]' > /tmp/mixfs-cases-round4.ts
+005	840aa6d9f2a3ffc7763332beceba56e0b3f8fb6bbd7042e0a1ff754e96380757	printf '%s\n' 'type I = Array<((A | B))[K]>' 'type J = readonly ((A | B))[K][]' | node ./bin/prettier.js --parser typesc
+006	a8284447056759ef85d51c0092a37ab793d59dbef6b2e7e4ead1ae7b9a9bc722	node node_modules/.bin/jest --no-watchman --runInBand tests_integration/__tests__/parser-api.js
+007	90484a5eebd878f01f271d408f578c5d3b3721a2d0fae8760208b1bbf4eacc12	git diff --check && git status --short
+008	552bf4434d1b43708e693969f6a53277d07f42b1289b2ec96a4b049a52f7007e	git diff --stat && git diff -- src/language-js/printer-estree.js | sed -n '1,240p'

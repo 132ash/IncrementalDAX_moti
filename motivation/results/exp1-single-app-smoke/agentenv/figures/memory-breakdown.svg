@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="460" viewBox="0 0 1000 460">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:system-ui,sans-serif;fill:#24292f}.title{font-size:20px;font-weight:600}.tick{font-size:11px}.label{font-size:12px}</style>
+<text class="title" x="78" y="30">Memory footprint and breakdown (20260914T124833Z-agentenv-replay)</text>
+<line x1="78" y1="370.0" x2="970" y2="370.0" stroke="#d8dee4"/>
+<text class="tick" x="70" y="374.0" text-anchor="end">0</text>
+<line x1="78" y1="295.0" x2="970" y2="295.0" stroke="#d8dee4"/>
+<text class="tick" x="70" y="299.0" text-anchor="end">149</text>
+<line x1="78" y1="220.0" x2="970" y2="220.0" stroke="#d8dee4"/>
+<text class="tick" x="70" y="224.0" text-anchor="end">299</text>
+<line x1="78" y1="145.0" x2="970" y2="145.0" stroke="#d8dee4"/>
+<text class="tick" x="70" y="149.0" text-anchor="end">448</text>
+<line x1="78" y1="70.0" x2="970" y2="70.0" stroke="#d8dee4"/>
+<text class="tick" x="70" y="74.0" text-anchor="end">598</text>
+<rect x="100.3" y="245.6" width="35.7" height="124.4" fill="#8250df"/>
+<rect x="144.9" y="343.0" width="35.7" height="27.0" fill="#2f81f7"/>
+<rect x="189.5" y="332.0" width="35.7" height="38.0" fill="#2da44e"/>
+<rect x="234.1" y="359.6" width="35.7" height="10.4" fill="#bf8700"/>
+<text class="label" x="189.5" y="394" text-anchor="middle">guest idle</text>
+<rect x="323.3" y="168.8" width="35.7" height="201.2" fill="#8250df"/>
+<rect x="367.9" y="337.2" width="35.7" height="32.8" fill="#2f81f7"/>
+<rect x="412.5" y="306.0" width="35.7" height="64.0" fill="#2da44e"/>
+<rect x="457.1" y="359.2" width="35.7" height="10.8" fill="#bf8700"/>
+<text class="label" x="412.5" y="394" text-anchor="middle">guest peak (step 023)</text>
+<rect x="546.3" y="212.1" width="35.7" height="157.9" fill="#8250df"/>
+<rect x="590.9" y="232.1" width="35.7" height="137.9" fill="#2f81f7"/>
+<rect x="635.5" y="369.7" width="35.7" height="0.3" fill="#2da44e"/>
+<rect x="680.1" y="354.9" width="35.7" height="15.1" fill="#bf8700"/>
+<text class="label" x="635.5" y="394" text-anchor="middle">AgentENV cgroup idle</text>
+<rect x="769.3" y="70.0" width="35.7" height="300.0" fill="#8250df"/>
+<rect x="813.9" y="97.4" width="35.7" height="272.6" fill="#2f81f7"/>
+<rect x="858.5" y="364.2" width="35.7" height="5.8" fill="#2da44e"/>
+<rect x="903.1" y="354.1" width="35.7" height="15.9" fill="#bf8700"/>
+<text class="label" x="858.5" y="394" text-anchor="middle">AgentENV cgroup peak</text>
+<rect x="78" y="45" width="12" height="12" fill="#8250df"/>
+<text class="tick" x="95" y="56">working set</text>
+<rect x="223" y="45" width="12" height="12" fill="#2f81f7"/>
+<text class="tick" x="240" y="56">anonymous</text>
+<rect x="368" y="45" width="12" height="12" fill="#2da44e"/>
+<text class="tick" x="385" y="56">page cache</text>
+<rect x="513" y="45" width="12" height="12" fill="#bf8700"/>
+<text class="tick" x="530" y="56">kernel</text>
+<text class="tick" transform="translate(18,220.0) rotate(-90)" text-anchor="middle">MiB</text>
+</svg>

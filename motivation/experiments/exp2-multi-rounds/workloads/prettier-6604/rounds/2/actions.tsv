@@ -1,0 +1,9 @@
+step	sha256	command
+001	faa56c005ffa90c4f4c29d0eb4324ee2463be31ce19d9af4d560f091bb1192bf	grep -RIn 'TSIndexedAccessType' src/language-js | sed -n '1,180p'
+002	95343118c6679d33979e59e9071c60c84ceae7ed3fd704afd34e663fc1fee37c	sed -n '3120,3275p' src/language-js/printer-estree.js
+003	50e1177501e8a73f59f8e8c9147259e7b0f9faf7b6bcc115099dfec0c0ecaf21	grep -RIl 'keyof\|TSIndexedAccessType' tests | sort | sed -n '1,120p'
+004	ac0f9cf26e8fbeb897aa8ffb6b0e6576a31edcf6d9f5ffa9d5579627e939dc5a	find tests -path '*typescript*' -type f -printf '%p\n' | sort | sed -n '1,160p'
+005	6837484d32183393ffa0b5347dfb2eb6ae7557c46cf47225932545c5a69619ca	sed -n '100,210p' src/language-js/printer-estree.js
+006	afe3b1038e576ffda9b0b3ae5ba3a2331776aa89cf5cb3853aa7463225083c5d	grep -n 'pathNeedsParens\|linesWithoutParens' src/language-js/printer-estree.js
+007	42c9638c3769d9fd99c019eff001786eba06660d725c087309289e2eda5a8b98	printf '%s\n' 'type A = ((number | string))["toString"]' 'type B = ((keyof A))["foo"]' > /tmp/mixfs-cases-round2.ts
+008	4df8c93fba7fb621914ee6c66caddde2d8557b6845c4da0a3869821cabeb3f5a	printf '%s\n' 'type C = 0 extends ((1 extends 2 ? 3 : 4)) ? 5 : 6' 'type D = ((0 extends 1 ? 2 : 3)) extends 4 ? 5 : 6' 

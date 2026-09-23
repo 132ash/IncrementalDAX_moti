@@ -1,0 +1,6 @@
+step	sha256	command
+001	ed8a69125afbc85ccd2ce2b06237997ba5fa92b357cc36af0817c81ad7f7b5c3	cd /testbed && sed -n '788,900p' sphinx/domains/cpp.py
+002	56c12a3453eb936d8ff74d20df350ba11eaaa774fc3d03a9a958409a1ee918a4	cd /testbed && grep -n "class ASTIdentifier\|def _parse_identifier\|def _parse_nested_name\|def _parse_string\|_parse_string\b" sphinx/domains/cpp.py | head; echo "=== ASTIdentifier ==="; sed -n '565,631p' sphinx/domains/cpp.py
+003	5b8f28c71fa09348e55cf75e8fd96a6af69cb80f73569ef97b1b5bdfda4391df	cd /testbed && sed -n '4627,4646p' sphinx/domains/cpp.py && echo "=== parse_expression entry ===" && sed -n '5206,5265p' sphinx/domains/cpp.py
+004	216adb95bbfef06815ef65485737c4abe0c88c788108e46f6be4a60053695c74	cd /testbed && grep -n "def parse_expression\|def parse_declaration\|class DefinitionParser\|def __init__" sphinx/domains/cpp.py | head -20 && echo "=== test helper ===" && sed -n '1,60p' tests/test_domain_cpp.py
+005	432c2bff88922e30ee5be3c682a51b41e5da4085bbe09da192a65e7d6077eab4	cd /testbed && sed -n '1,60p' tests/test_domain_cpp.py && echo "=== DefinitionParser init ===" && grep -n "class DefinitionParser" sphinx/domains/cpp.py && sed -n '4460,4500p' sphinx/domains/cpp.py

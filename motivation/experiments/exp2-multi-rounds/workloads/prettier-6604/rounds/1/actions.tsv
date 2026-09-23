@@ -1,0 +1,9 @@
+step	sha256	command
+001	4cd54545b85d11b5550f5e25ee26913fe9c002ee22e37adcdf9abd753fef3fed	find . -maxdepth 2 -type f -not -path './.git/*' | sort | sed -n '1,160p'
+002	54a12da26c67af23b5e46856c44ecd25d545b38670cd84df74f6b28c4867de7d	sed -n '1,180p' package.json
+003	585442e2365c594cc7c43bcdf5695047e5de22a5771ed33858e62e7a0f4df69c	find src/language-js -maxdepth 1 -type f -printf '%f\n' | sort
+004	95e78e4f90fad92d29a50e005e25aa39fb626a7d4fcb0df07f0b25692e1789e9	grep -RIn 'TSParenthesized\|ConditionalType' src/language-js | sed -n '1,180p'
+005	f2250a3055269332ee52e0591dc6f3c144846e4b50eb9fbadf7e57daf3f0f54f	sed -n '1,240p' src/language-js/needs-parens.js
+006	0439265b7b36562a66647220539c9b248472aad7d9554667bff43e07fa25dbad	sed -n '3360,3500p' src/language-js/printer-estree.js
+007	dfb686a986fc87115111f6fbc715c01d362af600a4344301eb2e8bc7375f0f5d	node ./bin/prettier.js --version
+008	bef87a9bcc83bdf7843851cfc517b8957d84052a10a523ee22a3fc56174846e6	node node_modules/.bin/jest --runInBand --listTests --testPathPattern='language-js.*typescript' | sed -n '1,120p'

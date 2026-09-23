@@ -1,0 +1,7 @@
+step	sha256	command
+001	0a97ce93945afbc1f4bf8cbf73d675dae5b0465ce43cbc0f6ee2184ced4faf65	cd /testbed && git log --oneline -3 && git status && python -c "import xarray; print(xarray.__version__)"
+002	7a4ca4eb47c294221bd2765f5660949b582d0a20aff68f45af8b900d2f6c964c	cd /testbed && grep -n "reset_index" xarray/core/dataset.py | head -50
+003	ec082ba3ac7b354af007629532b5ef468775d6911687620c4be6c10f44831ddd	cd /testbed && which python python3 conda 2>/dev/null; ls /opt/conda/envs 2>/dev/null; for p in /opt/conda/bin/python /opt/conda/envs/*/bin/python; do echo "== $p"; $p -c "import numpy, xarray; print(xarray.__version__)" 2>&1 | head -1; done
+004	aaad9e4fd257c460212b8e077e2e0244f49a63426d6a3b633da9fda320d6c67f	cd /testbed && sed -n '4108,4210p' xarray/core/dataset.py
+005	386bcee9c97d0fbadd975e57f7b97b1f2ee5930244a53f8acd3b8ca2b57f19d9	cd /testbed && /opt/miniconda3/bin/python -c "import numpy, xarray; print(xarray.__version__)"
+006	57eaefbe9b399cbccd9750feab92ab4055fbe9899f2029476af7a8fa2c19fe66	printf '%s' 'Y2QgL3Rlc3RiZWQgJiYgL29wdC9taW5pY29uZGEzL2Jpbi9weXRob24gLWMgIgppbXBvcnQgbnVtcHkgYXMgbnAKaW1wb3J0IHhhcnJheSBhcyB4cgpkcyA9IHhyLkRhdGFzZXQoY29vcmRzPXsneCc6IFsxLDIsM10sICd5JzogKCd4JywgWzQsNSw2XSl9KS5zZXRfaW5kZXgoeD0neScpCnByaW50KGRzKQpwcmludChkcy5yZXNldF9pbmRleCgneCcsIGRyb3A9VHJ1ZSkpCiIgMj4mMSB8IHRhaWwgLTMw' | base64 -d | bash -o pipefail

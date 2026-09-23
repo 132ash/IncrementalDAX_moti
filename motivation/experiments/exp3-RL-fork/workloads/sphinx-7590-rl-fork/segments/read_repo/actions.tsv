@@ -1,0 +1,7 @@
+step	sha256	command
+001	e9eb4cf8916078545d524f611ca9e6fcdb8413a3d3d41fea3ffd874e51d52ab8	cd /testbed && ls sphinx/domains/ && wc -l sphinx/domains/cpp.py && grep -n "class AST\|def _parse\|udl\|UDL\|literal" sphinx/domains/cpp.py | head -80
+002	fbc31e210e5a1284aa57f28e69363d250016fd79542fe58fb122d699b39de270	cd /testbed && grep -n "Expected end of definition\|Expected end of expression\|def _parse_literal\|_parse_number\|_parse_expression\|def _parse_definition" sphinx/domains/cpp.py | head -60
+003	3181c3b1bc3e65c25b407ee3e3a009dac7cc537c7ae96cd009469cc7cbc071fc	cd /testbed && sed -n '30,45p' sphinx/domains/cpp.py && echo "=== regex defs ===" && grep -rn "integer_literal_re\|float_literal_re\|char_literal_re\|identifier_re" sphinx/util/cfamily.py | head && echo "=== _parse_literal ===" && sed -n '4646,4760p' sphinx/domains/cpp.py
+004	830074ecd49fb4c01cfe9966b14b2d24d24ac3eab5c4a1004f49a2bc524ca3ee	cd /testbed && sed -n '776,900p' sphinx/domains/cpp.py
+005	205915d1e67d8a170ef4d241da389479eaa737dc22abcd19bfbae31d629aa7c5	cd /testbed && sed -n '25,70p' sphinx/util/cfamily.py
+006	4402f9c9399b0f1e20aebe4f1d67bd4ed4b1e5a238f63a79f6b57e69e21ba77e	cd /testbed && grep -n "user-defined\|user_defined\|udl\|UDL\|q_J\|q_s\|planck\|literal" tests/test_domain_cpp.py | head -40

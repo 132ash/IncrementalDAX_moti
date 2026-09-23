@@ -1,0 +1,5 @@
+round	purpose	primary_files	node_actions
+1	repository and TypeScript printer discovery	package.json;src/language-js/needs-parens.js	2
+2	indexed-access reproduction and implementation tracing	src/language-js/printer-estree.js;tests/type/typescript	2
+3	apply minimal fix and focused validation	src/language-js/printer-estree.js;/tmp/mixfs-cases-round3.ts	2
+4	edge cases, regression, and final diff	tests_config;tests_integration;/tmp/mixfs-cases-round4.ts	3

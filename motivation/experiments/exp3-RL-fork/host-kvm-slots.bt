@@ -1,0 +1,14 @@
+// Record the exact guest-physical to VMM-virtual mappings when each VM starts.
+struct kvm_region {
+  unsigned int slot;
+  unsigned int flags;
+  unsigned long guest_phys_addr;
+  unsigned long memory_size;
+  unsigned long userspace_addr;
+};
+
+tracepoint:syscalls:sys_enter_ioctl /args->cmd == 0x4020ae46/ {
+  $r = (struct kvm_region *)args->arg;
+  printf("%d\t%d\t%lx\t%lx\t%lx\n", pid, $r->slot,
+         $r->guest_phys_addr, $r->memory_size, $r->userspace_addr);
+}

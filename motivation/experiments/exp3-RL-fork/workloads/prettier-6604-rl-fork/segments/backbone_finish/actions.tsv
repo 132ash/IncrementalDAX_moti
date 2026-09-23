@@ -1,0 +1,6 @@
+step	sha256	command
+001	45df16d2081e2f3a6471c8bf3aa5a3363e5d808693d7f8d9cc136efbd7a3ba2b	cd /testbed && git diff && echo "=== new test files ===" && ls tests/typescript/custom/parenthesizedType/
+002	86a0b6888f57c1a6bd35c80984c9b9284b970e055dee00190c4ffcd1bd300c5d	cd /testbed && yarn jest tests/typescript/custom/parenthesizedType 2>&1 | tail -15
+003	5820a580e755b464092c930e67dee93bc0ae0bee912760e556b4a69bb992ed38	cd /testbed && git checkout package.json && git diff --stat && echo "=== snapshot ===" && cat tests/typescript/custom/parenthesizedType/__snapshots__/jsfmt.spec.js.snap
+004	9120b3bde6b25d2d2e2652020ec7ffc2a7114224c9f0198805b66ba34f33d3a5	cd /testbed && printf 'type A = (((number | string)))["x"];\ntype B = ((A["x"]))["y"];\ntype C = ((A | B))["x"]["y"];\ntype D = ((keyof T))[K];\ntype E = ((A extends B ? C : D))[K];\n' > /tmp/t4.ts && node ./bin/prettier.js /tmp/t4.ts 2>/dev/null | tee /tmp/out4.ts && echo "=== idempotency ===" && node ./bin/prettier.js /tmp/out4.ts 2>/dev/null | diff /tmp/out4.ts - && echo IDEMPOTENT
+005	6d668b5fb04ad21ca3a088a3f706a059d983971c7da321275267d834a22ac08f	cd /testbed && yarn jest tests/typescript/conformance/types 2>&1 | tail -8

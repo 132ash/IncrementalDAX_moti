@@ -1,0 +1,8 @@
+{
+  "instance_id": "prettier__prettier-6604",
+  "title": "TypeScript double-parenthesis semantic repair",
+  "url": "https://github.com/prettier/prettier/issues/6603",
+  "difficulty": "legacy real-world issue",
+  "base_commit": "affa24ce764bd14ac087abeef0603012f5c635d6",
+  "source_image": "ghcr.io/timesler/swe-polybench.eval.x86_64.prettier__prettier-6604@sha256:8159d38fcbd6d5f09402d93d3e15cf2a891058ddd835a224f1d6b3357a87cc94"
+}

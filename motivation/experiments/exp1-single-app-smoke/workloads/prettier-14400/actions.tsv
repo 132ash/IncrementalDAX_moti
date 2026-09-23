@@ -1,0 +1,26 @@
+001	75a4a2444d2487133df09e1d56b4bf2a2319ef0bd61cd60486b069fed7924cfb	ls -la /testbed
+002	87c6ecea35a4a32bed818c472a8886ef36833dd151c863650e27ab8b526c8390	ls -la /testbed/src
+003	3f66ab988815840b9036ec5f66319e7c81d725f7798adbb6cd058a8aa1835981	ls -la /testbed/src/language-html
+004	22708d61b06d79ca3b5037525e91fcb8844bad0db14483e21e011e0f75ebc89e	nl -ba /testbed/src/language-html/embed.js | sed -n '1,220p'
+005	720c1308a4c7806535f42e6e2c86186ddc4ec97129074dea236d14bfd6a57999	nl -ba /testbed/src/language-html/embed.js | sed -n '221,999p'
+006	fda80cd355d39bb26da78f106c5e155c1d486e9b339f2d788454d4d324c18ed3	(nl -ba /testbed/src/language-html/utils/index.js | sed -n '1,260p' && echo '---' && nl -ba /testbed/src/language-html/parser-html.js | sed -n '1,220p')
+007	07d54b581d76bcc392f76852a39ab2b71e49141007abfd55e22f40176d0bc77b	nl -ba /testbed/src/language-html/print/tag.js | sed -n '1,200p'
+008	525a1db00b3db590f147a6c9637dd8b156d843aa682bce8a464db4de0910dc73	rg -n "inferElementParser|isScriptLikeTag|svg:script" /testbed/src/language-html -n && nl -ba /testbed/src/language-html/utils/index.js | sed -n '90,450p'
+009	181810cc140166fed8a5d4b4aeb1c4a852c2b4457c172ace62a8e12faad8b03f	grep -RIn "inferElementParser\|isScriptLikeTag\|svg:script\|<script" /testbed/src/language-html
+010	bd41427ccea604cf5038722b2008d44fad80c8eea68846682d3bf95579ed2ae3	nl -ba /testbed/src/language-html/utils/index.js | sed -n '380,500p'
+011	de8e3f4b1b085a10f4dd939f602298a3fa1ea53b540297a82ae8b298c6737a95	nl -ba /testbed/src/language-html/print/element.js | sed -n '1,200p'
+012	273fb7e8214888826a9e4b1e5d42cee998a9fb89ac8e83df4b865b3c3bcb342f	nl -ba /testbed/src/language-html/utils/index.js | sed -n '100,140p'
+013	24cd158433ab25d50fe8a663bd34eb247f1af334142d9a6f9bf085bbb6484dcc	nl -ba /testbed/src/language-html/utils/index.js | sed -n '300,420p'
+014	12d55d3b54e2760e63348b20f44c688c0df3275f0d5877430374a009b3d8696f	nl -ba /testbed/src/language-html/print/children.js | sed -n '1,260p'
+015	e838bbd2906af71f46ce470a39cd0d7825ef62b62e0c69d7a2c0545bc4964297	nl -ba /testbed/src/language-html/print/tag.js | sed -n '200,420p'
+016	35770b1473ffb8ecad4daecc08199c8422054a182ff68326ac6ec1ff8d363b46	applypatch <<'PATCH'
+017	8d4cd6af93468a9fc00d975000d87b7cfdc884d4a2ebfaa96f166232efe73ba4	sed -i '/node\.fullName === "style" \|\|/a\      node.fullName === "svg:script" ||' /testbed/src/language-html/utils/index.js
+018	8d4cd6af93468a9fc00d975000d87b7cfdc884d4a2ebfaa96f166232efe73ba4	sed -i '/node\.fullName === "style" \|\|/a\      node.fullName === "svg:script" ||' /testbed/src/language-html/utils/index.js
+019	0b0195cc31781dde96aedc60e0c0ba2453efd15af809126c2b208fecd7f5f1f0	nl -ba /testbed/src/language-html/utils/index.js | sed -n '100,120p'
+020	0830a30a0f44aacba686ccff28b1ef8d291c0bb151d1a5b7d1c6ee66696ce142	git -C /testbed checkout -- src/language-html/utils/index.js && sed -i 's/node\.fullName === "svg:style" \|\|/node.fullName === "svg:script" ||\n      node.fullName === "svg:style" ||/' /testbed/src/language-html/utils/index.js && nl -ba /testbed/src/language-html/utils/index.js | sed -n '100,140p'
+021	3ce01516418512c35824a8c955ea54415759496524b403ff38f796b2fc7f9ff8	git -C /testbed checkout -- src/language-html/utils/index.js && nl -ba /testbed/src/language-html/utils/index.js | sed -n '90,140p'
+022	8588066a9b7fc6556a2825c0668d8c332521f8bbc4e9ef070e7c9ca954047e46	perl -0777 -pi -e 's/node\.fullName === "style" \|\|(\s*\n\s*)node\.fullName === "svg:style" \|\|/node.fullName === "style" ||$1      node.fullName === "svg:script" ||$1      node.fullName === "svg:style" ||/' /testbed/src/language-html/utils/index.js
+023	62634296d1ecf56d97dd29993f88ddad93cbd3dfdc6b86399aca86db8a4eccb0	node -e 'const prettier=require("/testbed"); const input = `<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 24 24"><script>document.addEventListener("DOMContentLoaded",()=>{const node=document.getElementById("lastStroke");});</script></svg>`; console.log(prettier.format(input,{parser:"html"}))'
+024	357014535d13424b2de0e102f2e3acce475528505d9f9e8c70c0ddc0dc726514	node <<'NODE'
+025	9d62a89b1f265a2908b4c002df82f34368ac23a970cec807eca924a8ff81ec6a	echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT && git add -A && git diff --cached
+026	9d62a89b1f265a2908b4c002df82f34368ac23a970cec807eca924a8ff81ec6a	echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT && git add -A && git diff --cached
